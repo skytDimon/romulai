@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romulus et Remus — Не одежда. Отношение.</title>
+    <meta name="description" content="Мы не магазин. Мы — твой лук на завтра.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <h1>Romulus et Remus</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#collections">Коллекции</a>
+                <a href="#about">О бренде</a>
+                <a href="#contact">Контакты</a>
+            </div>
+        </nav>
+        
+        <div class="hero">
+            <div class="hero-content">
+                <h2 class="hero-title">Мы не магазин.</h2>
+                <h3 class="hero-subtitle">Мы — твой лук на завтра.</h3>
+                <p class="hero-description">Открой для себя коллекции, которые определяют стиль завтрашнего дня</p>
+                <a href="#collections" class="cta-button">Смотреть коллекции</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <blockquote class="quote">
+                "Not clothes. An attitude."
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Collections -->
+    <section id="collections" class="collections">
+        <div class="container">
+            <h2 class="section-title">Коллекции</h2>
+            <div class="collections-grid">
+                <div class="collection-card" data-aos="fade-up">
+                    <div class="collection-image">
+                        <img src="img/tshirt1.png" alt="Acne Studios T-Shirt" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; align-items: center; justify-content: center; height: 100%; background: #f0f0f0; color: #666;">Изображение не найдено</div>
+                    </div>
+                    <div class="collection-content">
+                        <h3>Acne Studios T-Shirt</h3>
+                        <p>Премиальные футболки от Acne Studios</p>
+                        <a href="acne.html" class="collection-link">Смотреть</a>
+                    </div>
+                </div>
+                
+                <div class="collection-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="collection-image">
+                        <img src="img/tshirt2.png" alt="HP Health HP T-Shirt" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; align-items: center; justify-content: center; height: 100%; background: #f0f0f0; color: #666;">Изображение не найдено</div>
+                    </div>
+                    <div class="collection-content">
+                        <h3>HP Health HP T-Shirt</h3>
+                        <p>Футболки в стиле HP Health</p>
+                        <a href="hphealth.html" class="collection-link">Смотреть</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">О бренде</h2>
+                <div class="about-text">
+                    <p>Romulus et Remus — это не просто бренд одежды. Это философия жизни, выраженная через стиль.</p>
+                    <p>Мы создаем не просто вещи — мы создаем отношение к миру. Каждая коллекция — это история о том, как одежда может изменить не только внешний вид, но и внутреннее состояние.</p>
+                    <p>Наши модели — это не манекены, а реальные люди с реальными историями. Каждый элемент одежды создается с мыслью о том, как он будет жить в гардеробе и в жизни.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Связаться с нами</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" placeholder="Ваш Telegram" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Ваш вопрос" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Отправить</button>
+            </form>
+            <div id="formMessage" style="display: none; margin-top: 1rem; padding: 1rem; background: #d4edda; color: #155724; border-radius: 8px; text-align: center;">
+                Сообщение отправлено!
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Romulus et Remus.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html> 
