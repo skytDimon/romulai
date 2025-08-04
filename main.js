@@ -1,6 +1,7 @@
 // Mobile Menu Functionality
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileNav = document.getElementById('mobileNav');
+const mobileCloseBtn = document.getElementById('mobileCloseBtn');
 const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
 // Toggle mobile menu
@@ -17,6 +18,13 @@ mobileNavLinks.forEach(link => {
         mobileNav.classList.remove('active');
         document.body.style.overflow = '';
     });
+});
+
+// Close mobile menu when clicking close button
+mobileCloseBtn.addEventListener('click', () => {
+    mobileMenuBtn.classList.remove('active');
+    mobileNav.classList.remove('active');
+    document.body.style.overflow = '';
 });
 
 // Close mobile menu when clicking outside
@@ -206,6 +214,37 @@ function initImageLoading() {
         img.style.opacity = '0';
         img.style.transition = 'opacity 0.6s ease';
     });
+    
+    // Handle picture elements for WebP support
+    const pictures = document.querySelectorAll('picture');
+    pictures.forEach(picture => {
+        const img = picture.querySelector('img');
+        if (img) {
+            // Apply the same animation logic to picture images
+            if (img.complete) {
+                img.style.opacity = '1';
+            } else {
+                img.addEventListener('load', () => {
+                    img.style.opacity = '1';
+                });
+            }
+            
+            img.addEventListener('error', () => {
+                img.style.opacity = '1';
+                img.style.background = '#f0f0f0';
+                img.style.display = 'flex';
+                img.style.alignItems = 'center';
+                img.style.justifyContent = 'center';
+                img.style.color = '#666';
+                img.style.fontSize = '14px';
+                img.innerHTML = 'Изображение не найдено';
+            });
+            
+            // Initial state
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.6s ease';
+        }
+    });
 }
 
 // Initialize image loading
@@ -265,24 +304,100 @@ document.addEventListener('DOMContentLoaded', initLazyLoading);
 // Mobile-specific image optimization
 function optimizeForMobile() {
     const isMobile = window.innerWidth <= 768;
-    const images = document.querySelectorAll('img');
     
     if (isMobile) {
+        // Only preload the main hero image for each page
+        const currentPage = window.location.pathname;
+        let imageToPreload = null;
+        
+        if (currentPage.includes('acne.html')) {
+            imageToPreload = 'img/tshirt1.png';
+        } else if (currentPage.includes('zip.html')) {
+            imageToPreload = 'img/zip1.jpeg';
+        }
+        
+        if (imageToPreload) {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'image';
+            link.href = imageToPreload;
+            document.head.appendChild(link);
+        }
+        
+        // Add fetchpriority to all images
+        const images = document.querySelectorAll('img');
         images.forEach(img => {
-            // Add mobile-specific loading attributes
             img.setAttribute('fetchpriority', 'high');
-            
-            // Preload critical images
-            if (img.src.includes('tshirt1.png') || img.src.includes('zip1.jpeg')) {
-                const link = document.createElement('link');
-                link.rel = 'preload';
-                link.as = 'image';
-                link.href = img.src;
-                document.head.appendChild(link);
-            }
         });
     }
 }
 
 // Initialize mobile optimization
-document.addEventListener('DOMContentLoaded', optimizeForMobile); 
+document.addEventListener('DOMContentLoaded', optimizeForMobile);
+
+// Mobile Product Gallery Slider
+function initMobileGallery() {
+    const galleries = document.querySelectorAll('.mobile-product-gallery');
+    
+    galleries.forEach(gallery => {
+        const slides = gallery.querySelectorAll('.mobile-gallery-slide');
+        const dots = gallery.querySelectorAll('.mobile-gallery-dot');
+        const prevBtn = gallery.querySelector('.mobile-gallery-prev');
+        const nextBtn = gallery.querySelector('.mobile-gallery-next');
+        
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        // Event listeners
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+        
+        // Touch/swipe support
+        let startX = 0;
+        let endX = 0;
+        
+        gallery.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+        
+        gallery.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) { // Minimum swipe distance
+                if (diff > 0) {
+                    nextSlide(); // Swipe left
+                } else {
+                    prevSlide(); // Swipe right
+                }
+            }
+        });
+    });
+}
+
+// Initialize mobile gallery
+document.addEventListener('DOMContentLoaded', initMobileGallery); 

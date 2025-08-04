@@ -24,7 +24,7 @@
             <div class="nav-links desktop-nav">
                 <a href="index.html">На главную</a>
                 <a href="acne.html">Acne Studios T-Shirt</a>
-                <a href="urban.html">Zip Hoodie Army</a>
+                <a href="zip.html">Zip Hoodie Army</a>
             </div>
             
             <!-- Mobile Menu Button -->
@@ -37,10 +37,14 @@
         
         <!-- Mobile Navigation -->
         <div class="mobile-nav" id="mobileNav">
+            <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Закрыть меню">
+                <span></span>
+                <span></span>
+            </button>
             <div class="mobile-nav-content">
                 <a href="index.html" class="mobile-nav-link">На главную</a>
                 <a href="acne.html" class="mobile-nav-link">Acne Studios T-Shirt</a>
-                <a href="urban.html" class="mobile-nav-link">Zip Hoodie Army</a>
+                <a href="zip.html" class="mobile-nav-link">Zip Hoodie Army</a>
             </div>
         </div>
         
@@ -57,16 +61,45 @@
     <section class="product-section">
         <div class="container">
             <div class="product-showcase">
+                <!-- Mobile Gallery -->
+                <div class="mobile-product-gallery">
+                    <div class="mobile-gallery-container">
+                        <div class="mobile-gallery-slide active">
+                            <picture>
+                                <source srcset="img/tshirt2.webp" type="image/webp">
+                                <img src="img/tshirt2.png" alt="HP Health HP T-Shirt" loading="lazy" decoding="async">
+                            </picture>
+                        </div>
+                        <div class="mobile-gallery-slide">
+                            <img src="img/tshirt2_2.jpg" alt="HP Health HP T-Shirt - Вид 2" loading="lazy" decoding="async">
+                        </div>
+                        <div class="mobile-gallery-slide">
+                            <img src="img/tshirt2_3.jpg" alt="HP Health HP T-Shirt - Вид 3" loading="lazy" decoding="async">
+                        </div>
+                        <button class="mobile-gallery-nav mobile-gallery-prev" aria-label="Предыдущее изображение">‹</button>
+                        <button class="mobile-gallery-nav mobile-gallery-next" aria-label="Следующее изображение">›</button>
+                    </div>
+                    <div class="mobile-gallery-dots">
+                        <span class="mobile-gallery-dot active"></span>
+                        <span class="mobile-gallery-dot"></span>
+                        <span class="mobile-gallery-dot"></span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Images -->
                 <div class="product-images">
                     <div class="product-image-large">
-                        <img src="img/tshirt2.png" alt="HP Health HP T-Shirt" loading="lazy">
+                        <picture>
+                            <source srcset="img/tshirt2.webp" type="image/webp">
+                            <img src="img/tshirt2.png" alt="HP Health HP T-Shirt" loading="lazy" decoding="async">
+                        </picture>
                     </div>
                     <div class="product-images-grid">
                         <div class="product-image-small">
-                            <img src="img/tshirt2_2.jpg" alt="HP Health HP T-Shirt - Вид 2" loading="lazy">
+                            <img src="img/tshirt2_2.jpg" alt="HP Health HP T-Shirt - Вид 2" loading="lazy" decoding="async">
                         </div>
                         <div class="product-image-small">
-                            <img src="img/tshirt2_3.jpg" alt="HP Health HP T-Shirt - Вид 3" loading="lazy">
+                            <img src="img/tshirt2_3.jpg" alt="HP Health HP T-Shirt - Вид 3" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>

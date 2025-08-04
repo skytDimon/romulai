@@ -35,6 +35,10 @@
         
         <!-- Mobile Navigation -->
         <div class="mobile-nav" id="mobileNav">
+            <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Закрыть меню">
+                <span></span>
+                <span></span>
+            </button>
             <div class="mobile-nav-content">
                 <a href="#collections" class="mobile-nav-link">Коллекции</a>
                 <a href="#about" class="mobile-nav-link">О бренде</a>
@@ -92,13 +96,16 @@
                 
                 <div class="collection-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="collection-image">
-                        <img src="img/zip1.jpeg" alt="Zip Hoodie Army" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <picture>
+                            <source srcset="img/zip1.webp" type="image/webp">
+                            <img src="img/zip1.jpeg" alt="Zip Hoodie Army" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        </picture>
                         <div style="display: none; align-items: center; justify-content: center; height: 100%; background: #f0f0f0; color: #666;">Изображение не найдено</div>
                     </div>
                     <div class="collection-content">
                         <h3>Zip Hoodie Army</h3>
                         <p>Армейские худи с молнией</p>
-                        <a href="urban.html" class="collection-link">Смотреть</a>
+                        <a href="zip.html" class="collection-link">Смотреть</a>
                     </div>
                 </div>
             </div>
