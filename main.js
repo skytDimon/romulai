@@ -190,10 +190,17 @@ function initImageLoading() {
     const images = document.querySelectorAll('img');
     
     images.forEach(img => {
-        // If image is already loaded, show it immediately
-        if (img.complete) {
+        // Set transition first
+        img.style.transition = 'opacity 0.6s ease';
+        
+        // Check if image is already loaded
+        if (img.complete && img.naturalHeight !== 0) {
+            // Image is already loaded, show it immediately
             img.style.opacity = '1';
         } else {
+            // Image is not loaded yet, set initial state and add listeners
+            img.style.opacity = '0';
+            
             img.addEventListener('load', () => {
                 img.style.opacity = '1';
             });
@@ -209,10 +216,6 @@ function initImageLoading() {
             img.style.fontSize = '14px';
             img.innerHTML = 'Изображение не найдено';
         });
-        
-        // Initial state
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.6s ease';
     });
     
     // Handle picture elements for WebP support
@@ -220,10 +223,17 @@ function initImageLoading() {
     pictures.forEach(picture => {
         const img = picture.querySelector('img');
         if (img) {
-            // Apply the same animation logic to picture images
-            if (img.complete) {
+            // Set transition first
+            img.style.transition = 'opacity 0.6s ease';
+            
+            // Check if image is already loaded
+            if (img.complete && img.naturalHeight !== 0) {
+                // Image is already loaded, show it immediately
                 img.style.opacity = '1';
             } else {
+                // Image is not loaded yet, set initial state and add listeners
+                img.style.opacity = '0';
+                
                 img.addEventListener('load', () => {
                     img.style.opacity = '1';
                 });
@@ -239,10 +249,6 @@ function initImageLoading() {
                 img.style.fontSize = '14px';
                 img.innerHTML = 'Изображение не найдено';
             });
-            
-            // Initial state
-            img.style.opacity = '0';
-            img.style.transition = 'opacity 0.6s ease';
         }
     });
 }
