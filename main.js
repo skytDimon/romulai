@@ -1,16 +1,55 @@
+// Mobile Menu Functionality
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileNav = document.getElementById('mobileNav');
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+// Toggle mobile menu
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.classList.toggle('active');
+    mobileNav.classList.toggle('active');
+    document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+});
+
+// Close mobile menu when clicking on links
+mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!mobileMenuBtn.contains(e.target) && !mobileNav.contains(e.target)) {
+        mobileMenuBtn.classList.remove('active');
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
 // Telegram Bot Configuration
 // Настроено для отправки сообщений в Telegram
 
-// Intersection Observer for scroll animations
+// Apple-style Intersection Observer for scroll animations
 const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: '0px 0px -100px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in-up');
+            // Add different animations based on element type
+            if (entry.target.classList.contains('collection-card')) {
+                entry.target.classList.add('animate');
+            } else if (entry.target.classList.contains('section-title')) {
+                entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+            } else if (entry.target.classList.contains('about-text')) {
+                entry.target.style.animation = 'slideInFromLeft 0.8s ease-out forwards';
+            } else {
+                entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+            }
             observer.unobserve(entry.target);
         }
     });
@@ -31,6 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize hover effects
     initHoverEffects();
+    
+    // Initialize navbar scroll effect
+    initNavbarScroll();
 });
 
 // Smooth scrolling for navigation links
@@ -101,18 +143,6 @@ function initHoverEffects() {
     });
 }
 
-// Parallax effect for hero section
-function initParallaxEffect() {
-    const hero = document.querySelector('.hero');
-    if (!hero) return;
-    
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
-        hero.style.transform = `translateY(${rate}px)`;
-    });
-}
-
 // Navbar background on scroll
 function initNavbarScroll() {
     const navbar = document.querySelector('.nav');
@@ -126,12 +156,6 @@ function initNavbarScroll() {
         }
     });
 }
-
-// Initialize additional effects
-document.addEventListener('DOMContentLoaded', () => {
-    initParallaxEffect();
-    initNavbarScroll();
-});
 
 // Utility function for debouncing
 function debounce(func, wait) {
@@ -153,20 +177,21 @@ const optimizedScrollHandler = debounce(() => {
 
 window.addEventListener('scroll', optimizedScrollHandler);
 
-// Add loading animation for images
+// Apple-style loading animation for images
 function initImageLoading() {
     const images = document.querySelectorAll('img');
     
     images.forEach(img => {
-        console.log('Loading image:', img.src);
-        
-        img.addEventListener('load', () => {
-            console.log('Image loaded successfully:', img.src);
+        // If image is already loaded, show it immediately
+        if (img.complete) {
             img.style.opacity = '1';
-        });
+        } else {
+            img.addEventListener('load', () => {
+                img.style.opacity = '1';
+            });
+        }
         
         img.addEventListener('error', () => {
-            console.error('Failed to load image:', img.src);
             img.style.opacity = '1';
             img.style.background = '#f0f0f0';
             img.style.display = 'flex';
@@ -177,8 +202,9 @@ function initImageLoading() {
             img.innerHTML = 'Изображение не найдено';
         });
         
+        // Initial state
         img.style.opacity = '0';
-        img.style.transition = 'opacity 0.3s ease';
+        img.style.transition = 'opacity 0.6s ease';
     });
 }
 
@@ -188,13 +214,10 @@ document.addEventListener('DOMContentLoaded', initImageLoading);
 // Add keyboard navigation support
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        // Close any open modals or overlays
-        const modals = document.querySelectorAll('.modal, .overlay');
-        modals.forEach(modal => {
-            if (modal.style.display === 'block') {
-                modal.style.display = 'none';
-            }
-        });
+        // Close mobile menu
+        mobileMenuBtn.classList.remove('active');
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
     }
 });
 
@@ -214,4 +237,52 @@ function initTouchSupport() {
 }
 
 // Initialize touch support
-document.addEventListener('DOMContentLoaded', initTouchSupport); 
+document.addEventListener('DOMContentLoaded', initTouchSupport);
+
+// Performance optimization: Lazy loading for images
+function initLazyLoading() {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src || img.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+        
+        images.forEach(img => imageObserver.observe(img));
+    }
+}
+
+// Initialize lazy loading
+document.addEventListener('DOMContentLoaded', initLazyLoading);
+
+// Mobile-specific image optimization
+function optimizeForMobile() {
+    const isMobile = window.innerWidth <= 768;
+    const images = document.querySelectorAll('img');
+    
+    if (isMobile) {
+        images.forEach(img => {
+            // Add mobile-specific loading attributes
+            img.setAttribute('fetchpriority', 'high');
+            
+            // Preload critical images
+            if (img.src.includes('tshirt1.png') || img.src.includes('zip1.jpeg')) {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = img.src;
+                document.head.appendChild(link);
+            }
+        });
+    }
+}
+
+// Initialize mobile optimization
+document.addEventListener('DOMContentLoaded', optimizeForMobile); 

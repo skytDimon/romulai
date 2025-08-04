@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -17,12 +17,30 @@
             <div class="logo">
                 <h1>Romulus et Remus</h1>
             </div>
-            <div class="nav-links">
+            
+            <!-- Desktop Navigation -->
+            <div class="nav-links desktop-nav">
                 <a href="#collections">Коллекции</a>
                 <a href="#about">О бренде</a>
                 <a href="#contact">Контакты</a>
             </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav" id="mobileNav">
+            <div class="mobile-nav-content">
+                <a href="#collections" class="mobile-nav-link">Коллекции</a>
+                <a href="#about" class="mobile-nav-link">О бренде</a>
+                <a href="#contact" class="mobile-nav-link">Контакты</a>
+            </div>
+        </div>
         
         <div class="hero">
             <div class="hero-content">
@@ -50,7 +68,7 @@
             <div class="collections-grid">
                 <div class="collection-card" data-aos="fade-up">
                     <div class="collection-image">
-                        <img src="img/tshirt1.png" alt="Acne Studios T-Shirt" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <img src="img/tshirt1.png" alt="Acne Studios T-Shirt" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div style="display: none; align-items: center; justify-content: center; height: 100%; background: #f0f0f0; color: #666;">Изображение не найдено</div>
                     </div>
                     <div class="collection-content">
@@ -62,13 +80,25 @@
                 
                 <div class="collection-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="collection-image">
-                        <img src="img/tshirt2.png" alt="HP Health HP T-Shirt" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <img src="img/tshirt2.png" alt="HP Health HP T-Shirt" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div style="display: none; align-items: center; justify-content: center; height: 100%; background: #f0f0f0; color: #666;">Изображение не найдено</div>
                     </div>
                     <div class="collection-content">
                         <h3>HP Health HP T-Shirt</h3>
                         <p>Футболки в стиле HP Health</p>
                         <a href="hphealth.html" class="collection-link">Смотреть</a>
+                    </div>
+                </div>
+                
+                <div class="collection-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="collection-image">
+                        <img src="img/zip1.jpeg" alt="Zip Hoodie Army" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; align-items: center; justify-content: center; height: 100%; background: #f0f0f0; color: #666;">Изображение не найдено</div>
+                    </div>
+                    <div class="collection-content">
+                        <h3>Zip Hoodie Army</h3>
+                        <p>Армейские худи с молнией</p>
+                        <a href="urban.html" class="collection-link">Смотреть</a>
                     </div>
                 </div>
             </div>
