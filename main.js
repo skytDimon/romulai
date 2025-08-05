@@ -81,6 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize navbar scroll effect
     initNavbarScroll();
+    
+
 });
 
 // Smooth scrolling for navigation links

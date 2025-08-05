@@ -312,9 +312,17 @@ body {
     transform: translateY(-2px);
 }
 
+/* Специальные стили для кнопок Poizon */
+.cta-button[href*="poizon.html"]:hover,
+.cta-button[href*="romul_manager"]:hover {
+    background: white !important;
+    color: #1a1a1a !important;
+    border-color: white !important;
+}
+
 /* Quote Section */
 .quote-section {
-    padding: 8rem 0;
+    padding: 4rem 0;
     background: #f8f8f8;
 }
 
@@ -331,7 +339,7 @@ body {
 
 /* Collections */
 .collections {
-    padding: 8rem 0;
+    padding: 4rem 0;
 }
 
 .section-title {
@@ -448,7 +456,7 @@ body {
 
 /* About Section */
 .about {
-    padding: 8rem 0;
+    padding: 4rem 0;
     background: #f8f8f8;
 }
 
@@ -481,7 +489,7 @@ body {
 
 /* Contact Section */
 .contact {
-    padding: 8rem 0;
+    padding: 4rem 0;
 }
 
 .contact-form {
