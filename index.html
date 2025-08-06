@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Romulus et Remus — Не одежда. Отношение.</title>
-    <meta name="description" content="Мы не магазин. Мы — твой лук на завтра.">
+    <meta name="description" content="Мы не магазин Мы — твой лук на завтра">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,10 +50,9 @@
         
         <div class="hero">
             <div class="hero-content">
-                <h2 class="hero-title">Мы не магазин.</h2>
-                <h3 class="hero-subtitle">Мы — твой лук на завтра.</h3>
+                <h2 class="hero-title">Мы не магазин</h2>
+                <h3 class="hero-subtitle">Мы — твой лук на завтра</h3>
                 <p class="hero-description">Открой для себя коллекции, которые определяют стиль завтрашнего дня</p>
-                <a href="#collections" class="cta-button">Смотреть коллекции</a>
             </div>
         </div>
     </header>
@@ -72,9 +71,9 @@
         <div class="container">
             <h2 class="section-title">Коллекции</h2>
             <div class="collections-grid">
-                <div class="collection-card" data-aos="fade-up">
+                <div class="collection-card wide-card" data-aos="fade-up">
                     <div class="collection-image">
-                        <img src="img/tshirt1.png" alt="Acne Studios T-Shirt" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <img src="img/tshirt1.png" alt="Acne Studios T-Shirt" loading="lazy" decoding="async" style="width:100%;height:auto;object-fit:cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div style="display: none; align-items: center; justify-content: center; height: 100%; background: #f0f0f0; color: #666;">Изображение не найдено</div>
                     </div>
                     <div class="collection-content">
@@ -84,9 +83,9 @@
                     </div>
                 </div>
                 
-                <div class="collection-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="collection-card wide-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="collection-image">
-                        <img src="img/tshirt2.png" alt="HP Health HP T-Shirt" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <img src="img/tshirt2.png" alt="HP Health HP T-Shirt" loading="lazy" decoding="async" style="width:100%;height:auto;object-fit:cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div style="display: none; align-items: center; justify-content: center; height: 100%; background: #f0f0f0; color: #666;">Изображение не найдено</div>
                     </div>
                     <div class="collection-content">
@@ -96,11 +95,11 @@
                     </div>
                 </div>
                 
-                <div class="collection-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="collection-card wide-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="collection-image">
                         <picture>
                             <source srcset="img/zip1.webp" type="image/webp">
-                            <img src="img/zip1.png" alt="Zip Hoodie Army" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <img src="img/zip1.png" alt="Zip Hoodie Army" loading="lazy" decoding="async" style="width:100%;height:auto;object-fit:cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         </picture>
                         <div style="display: none; align-items: center; justify-content: center; height: 100%; background: #f0f0f0; color: #666;">Изображение не найдено</div>
                     </div>
@@ -127,13 +126,11 @@
 
     <!-- About -->
     <section id="about" class="about">
-        <div class="container">
+        <div class="container" style="background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); padding: 3rem 2rem; margin-top: 3rem;">
             <div class="about-content">
-                <h2 class="section-title">О бренде</h2>
-                <div class="about-text">
-                    <p>Romulus et Remus — это не просто бренд одежды. Это философия жизни, выраженная через стиль.</p>
-                    <p>Мы создаем не просто вещи — мы создаем отношение к миру. Каждая коллекция — это история о том, как одежда может изменить не только внешний вид, но и внутреннее состояние.</p>
-                    <p>Наши модели — это не манекены, а реальные люди с реальными историями. Каждый элемент одежды создается с мыслью о том, как он будет жить в гардеробе и в жизни.</p>
+                <div class="about-text" style="margin-bottom: 0; text-align:center;">
+                    <p style="margin-bottom: 0rem;">Romulus et Remus — одежда родом из современного Екатеринбурга.</p>
+                    <p style="margin-bottom: 0rem;">Мы создаем не просто вещи — мы создаем отношение к миру. Каждая коллекция — это история о том, как одежда может изменить не только внешний вид, но и внутреннее состояние.</p>
                 </div>
             </div>
         </div>
@@ -154,6 +151,10 @@
             </form>
             <div id="formMessage" style="display: none; margin-top: 1rem; padding: 1rem; background: #d4edda; color: #155724; border-radius: 8px; text-align: center;">
                 Сообщение отправлено!
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="color: #666; margin-bottom: 1rem;">Или свяжитесь с нами напрямую:</p>
+                <a href="https://t.me/romul_manager" target="_blank" style="color: #1a1a1a; text-decoration: none; font-weight: 600; border-bottom: 2px solid #1a1a1a; padding-bottom: 2px;">@romul_manager</a>
             </div>
         </div>
     </section>
